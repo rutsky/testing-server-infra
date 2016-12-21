@@ -51,3 +51,14 @@ spec:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
         - --nginx-configmap=$(POD_NAMESPACE)/nginx-load-balancer-conf
+        volumeMounts:
+          - mountPath: /etc/nginx/template
+            name: nginx-template-volume
+            readOnly: true
+      volumes:
+        - name: nginx-template-volume
+          configMap:
+            name: nginx-template
+            items:
+            - key: nginx.tmpl
+              path: nginx.tmpl
