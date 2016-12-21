@@ -9,8 +9,27 @@ spec:
       labels:
         app: testing-server
     spec:
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: testing-server-secret
       containers:
       - name: testing-server
         image: rutsky/testing-server:dev
+        args:
+        - --hostname=0.0.0.0
+        - --port=8080
+        - --htpasswd=/srv/secret/htpasswd
+        - --token-secret=/srv/secret/token.secret
+        env:
+        - name: SENTRY_DSN
+          valueFrom:
+            secretKeyRef:
+              name: testing-server-secret
+              key: sentry_dsn
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: secret-volume
+          readOnly: true
+          mountPath: /srv/secret
