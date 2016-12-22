@@ -15,7 +15,7 @@ spec:
             secretName: testing-server-secret
       containers:
       - name: testing-server
-        image: rutsky/testing-server:v0.0.4
+        image: rutsky/testing-server:v0.0.5
         args:
         - --hostname=0.0.0.0
         - --port=8080
@@ -60,6 +60,11 @@ spec:
             secretKeyRef:
               name: testing-server-secret
               key: worker-ssh-host
+        - name: TESTING_SERVER_WORKER_SSH_PORT
+          valueFrom:
+            secretKeyRef:
+              name: testing-server-secret
+              key: worker-ssh-port
         - name: TESTING_SERVER_WORKER_SSH_USERNAME
           valueFrom:
             secretKeyRef:
