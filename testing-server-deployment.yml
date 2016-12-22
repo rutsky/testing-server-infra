@@ -23,7 +23,7 @@ spec:
         - --token-secret-file=/srv/secret/token.secret
         - --worker-ssh-known-hosts=/srv/secret/known_hosts
         - --worker-ssh-key=/srv/secret/id_rsa
-        - -l DEBUG
+        - -l=DEBUG
         env:
         - name: SENTRY_DSN
           valueFrom:
