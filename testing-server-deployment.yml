@@ -21,7 +21,7 @@ spec:
         - --port=8080
         - --htpasswd-file=/srv/secret/htpasswd
         - --token-secret-file=/srv/secret/token.secret
-        - --worker-ssh-known-hosts=/srv/secret/known_hosts
+        - --worker-ssh-known-hosts=/srv/secret/worker-ssh-known-hosts-file
         - --worker-ssh-key=/srv/secret/worker-ssh-key
         - -l=DEBUG
         env:
