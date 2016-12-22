@@ -15,14 +15,14 @@ spec:
             secretName: testing-server-secret
       containers:
       - name: testing-server
-        image: rutsky/testing-server:v0.0.3
+        image: rutsky/testing-server:v0.0.4
         args:
         - --hostname=0.0.0.0
         - --port=8080
         - --htpasswd-file=/srv/secret/htpasswd
         - --token-secret-file=/srv/secret/token.secret
         - --worker-ssh-known-hosts=/srv/secret/known_hosts
-        - --worker-ssh-key=/srv/secret/id_rsa
+        - --worker-ssh-key=/srv/secret/worker-ssh-key
         - -l=DEBUG
         env:
         - name: SENTRY_DSN
