@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: worker-ssh-forward
+spec:
+  replicas: 1
+  selector:
+    app: worker-ssh-forward
+  template:
+    metadata:
+      name: worker-ssh-forward
+      labels:
+        app: worker-ssh-forward
+    spec:
+      hostNetwork: true
+      containers:
+        - name: worker-ssh-forward
+          image: bortels/socat
+          ports:
+          - containerPort: 2223
+            hostPort: 2223
+          args:
+          - -d
+          - -d
+          - TCP4-LISTEN:2223,reuseaddr,fork
+          - TCP:cppcheck-vm.he.rutsky.ru:22
+      nodeSelector:
+        kubernetes.io/hostname: cppcheck
