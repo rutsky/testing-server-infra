@@ -73,23 +73,23 @@ spec:
               key: worker-ssh-username
         - name: TESTING_SERVER_SKIP_SVN_SYNC
           valueFrom:
-            secretKeyRef:
-              name: testing-server-secret
+            configMapKeyRef:
+              name: testing-server-configmap
               key: skip_svn_sync
         - name: TESTING_SERVER_SKIP_TRAC_SYNC
           valueFrom:
-            secretKeyRef:
-              name: testing-server-secret
+            configMapKeyRef:
+              name: testing-server-configmap
               key: skip_trac_sync
         - name: TESTING_SERVER_SKIP_CHECKING
           valueFrom:
-            secretKeyRef:
-              name: testing-server-secret
+            configMapKeyRef:
+              name: testing-server-configmap
               key: skip_checking
         - name: TESTING_SERVER_SKIP_REPORTING
           valueFrom:
-            secretKeyRef:
-              name: testing-server-secret
+            configMapKeyRef:
+              name: testing-server-configmap
               key: skip_reporting
         ports:
         - containerPort: 8080
