@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testing-server-configmap
+  namespace: default
+data:
+  skip_svn_sync: "false"
+  skip_trac_sync: "false"
+  skip_checking: "false"
+  skip_reporting: "false"
