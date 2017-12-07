@@ -16,7 +16,7 @@ spec:
             secretName: testing-server-secret
       containers:
       - name: testing-server
-        image: rutsky/testing-server:v0.1.16
+        image: rutsky/testing-server:v0.1.17
         args:
         - --hostname=0.0.0.0
         - --port=8080
